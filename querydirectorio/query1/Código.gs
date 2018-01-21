@@ -1,12 +1,5 @@
 var hojaID = '1fwgMRZ4H5Z0o1Id02WT930_u5UdWH5__J2HsSDx8opk';
 
-/*
-function doGet(e)
-{
-  num = e.parameter.user;
-  return HtmlService.createHtmlOutputFromFile('Index.html');
-}
-*/
 
 function doGet(request) {
   return HtmlService.createTemplateFromFile('Index.html')
