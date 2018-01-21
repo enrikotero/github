@@ -1,0 +1,16 @@
+<script>
+    function rellenarAlumno(alumno)
+      {
+      document.getElementById("dato").innerHTML = "Correo pasado: "+ alumno.dato;
+      document.getElementById("nombre").innerHTML = "Nombre: "+ alumno.nombre;
+      document.getElementById("edad").innerHTML = "Edad: "+ alumno.edad;
+      document.getElementById("direccion").innerHTML = "Dirección: "+ alumno.direccion;
+      document.getElementById("correo").innerHTML = "Correo: "+ alumno.correo;
+      
+      //console.log("funcion rellenar : "+ alumno);
+      }
+    
+    google.script.run.withSuccessHandler(rellenarAlumno).cogerAlumno();        
+</script>
+
+
