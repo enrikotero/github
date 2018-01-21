@@ -1,0 +1,42 @@
+<script>
+    //ANGULAR
+    var app = angular.module('tabla', []);
+    app.controller('controlador', function($scope) {
+    
+    $scope.encabezados = [];
+    $scope.visibles = [];
+    $scope.filtros = [];
+    $scope.filas = [[],[]];
+    
+    empezar();
+    
+    function empezar ()
+      {
+      console.log("Rellenar filas");
+      google.script.run.withSuccessHandler(rellenarDatos).cogerTabla();
+      };
+      
+    function rellenarDatos (tabla)
+      {
+      for (var b = 0; b < tabla[0].length; b++)
+        {
+        $scope.visibles[b] = true;
+        $scope.filtros[b] = "";
+        $scope.encabezados[b] = tabla[0][b];
+        }
+
+      for (var a = 1; a < tabla.length; a++)
+        {
+        //$scope.filas[a] = {nombre:tabla[a][0], numero:tabla[a][1], edad:tabla[a][2], direccion:tabla[a][3], email:tabla[a][4]};
+         for (var c = 0; c < tabla[a].length; c++)
+          {
+          $scope.filas[a] =  $scope.filas[a] || [];
+          $scope.filas[a][c] = tabla[a][c];
+          }
+        }
+       
+      $scope.$apply();
+      };
+      
+    });
+</script>

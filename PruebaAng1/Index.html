@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+     <?!= include('javascript'); ?>
+    <base target="_top">
+  </head>
+  <body>
+    <div ng-app="tabla" ng-controller="controlador">
+    
+    <h3>MOSTRAR</h3>
+    <label ng-repeat ="encabezado in encabezados">{{encabezado}}
+    <input type="checkbox" ng-model="visibles[$index]">
+    &nbsp;&nbsp;&nbsp;
+    </label>
+    
+    <h3>FILTRAR</h3>
+    <p ng-repeat ="encabezado in encabezados">{{encabezado}}&nbsp;&nbsp;&nbsp;<input type="text" ng-model="filtros[$index]"></p>
+    
+    <h3>DATOS</h3>
+    <table>
+
+     <tr>
+      <th ng-repeat="encabezado in encabezados" ng-if=visibles[$index]>{{encabezado}}</th>
+     </tr>
+
+     <tr ng-repeat="fila in filas | filter:{ filas[$index][0] : filtros[0]}">
+       <td ng-repeat ="columna  in fila" ng-if=visibles[$index]>{{columna}}</td>
+     </tr>
+     
+    </table>
+    </div>
+  </body>
+</html>
+
+
